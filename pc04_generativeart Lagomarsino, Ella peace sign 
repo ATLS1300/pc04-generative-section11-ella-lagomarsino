@@ -1,0 +1,102 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Sep 17 09:42:51 2021
+
+@author: ellalagomarsino
+"""
+"""
+Created on Thu Sep 15 11:39:56 2020
+PC04 start code
+@author: Ella Lagomarsino
+********* HEY, READ THIS FIRST **********
+My code uses three turtles to create red, white, and blue horizontal stripes as the background
+a peace sign in the middle, and a star. My code represents USA. The peace sign repesent the 
+hope for peace across America.
+"""
+# You must make 2 turtle variables
+# You must use 2 for loops (a nested for loop counts as 2!)
+# You must use at least 1 random element (something from the random library)
+# Don't forget to comment your code! (what does each for loop do? What does the random function you'll use do?)
+# =============== ADD YOUR CODE BELOW! =================
+import turtle
+import math 
+import random
+
+turtle.colormode(255)
+# turtle.tracer(0) # uncomment this line to turn off turtle's animation. You must update the image yourself using panel.update() (line 42)
+
+# Create a panel to draw on. 
+panel = turtle.Screen()
+w = 700 # width of panel
+h = 700 # height of panel
+panel.setup(width=w, height=h) #600 x 600 is a decent size to work on. 
+# background stripes size and colors
+pensize=200
+backgroundstripes = ("firebrick3","dodgerblue4","oldlace")
+
+panel.bgcolor("firebrick3") #setting up the background color
+background=turtle.Turtle()
+#Creating background stripes
+background.up()
+background.setx(w/2)
+background.sety((h/2)-(pensize/2))
+background.left(180)
+#Forloop that creates background stripe colors
+for color in backgroundstripes:
+    background.pencolor(color)
+    background.pensize(pensize)
+    background.down()
+    background.forward(w)
+    background.up()
+    background.backward(w)
+    background.left(90)
+    background.forward(pensize)
+    background.right(90)
+
+# making peace sign
+circle = turtle.Turtle()
+# radius of the circle 
+r = 160
+circle.up()
+circle.sety(-r)
+circle.pensize(20)
+#For random peace sign colors
+circlecolors=("lightskyblue","ghostwhite","lightskyblue2")
+circle.color(random.choice(circlecolors))
+#finish making peace sign
+circle.down()
+circle.circle(r)
+circle.left(90)
+circle.forward(r)
+circle.right(130)
+circle.forward(r)
+circle.up()
+circle.backward(r)
+circle.left(260)
+circle.down()
+circle.forward(r)
+circle.backward(r)
+circle.right(130)
+circle.forward(r)
+
+#create a star
+star=turtle.Turtle()
+star.pensize(10)
+#star pen color
+star.pencolor("lightgoldenrodyellow")
+star.up()
+star.goto(-350,150)
+star.pendown()
+for i in range(6):
+    star.forward(200)
+    star.right(144)
+star.penup()
+star.goto(-300,150)
+star.pendown()
+
+
+# panel.update() # uncomment this if you've turned off animation (line 26). I recommend leaving this outside of loops, for now.
+# =================== CLEAN UP =========================
+# uncomment the line below when you are finished with your code (before you turn it in)
+# turtle.done()
